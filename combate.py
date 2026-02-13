@@ -40,8 +40,7 @@ def turno(atacante, accion_atacante, defensor, accion_defensor):
             )
     else:
         mensaje = (
-            f"{atacante.nombre} no ha atacado. "
-            f"{defensor.nombre} tiene {defensor.vida} puntos de vida."
+            f"{atacante.nombre} no ha atacado. {defensor.nombre} tiene {defensor.vida} puntos de vida."
         )
 
     return mensaje
