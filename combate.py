@@ -29,7 +29,7 @@ def turno(atacante, accion_atacante, defensor, accion_defensor):
     :rtype: int
     """
     if accion_atacante == 1:
-        if accion_defensor == 0:
+        if accion_defensor == 1:
             return defensor.vida - (atacante.ataque - defensor.defensa)
         else:
             return defensor.vida - atacante.ataque
