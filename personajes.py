@@ -6,3 +6,11 @@ class personaje:
         self.ataque = ataque
         self.defensa = defensa
 
+    def atacar(self):
+        return self.ataque
+    
+    def defender(self):
+        return self.defensa
+    
+    def setVida(self, value):
+        self.vida = value
