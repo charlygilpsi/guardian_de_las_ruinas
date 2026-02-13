@@ -7,7 +7,7 @@ def maquina_ataque():
     :return: 1 ataca y 0 defiende.
     :rtype: int
     """
-    return random.randint(0, 1)
+    return random.randint(1, 2)
 
 
 def turno(atacante, accion_atacante, defensor, accion_defensor):
@@ -16,18 +16,18 @@ def turno(atacante, accion_atacante, defensor, accion_defensor):
     
     :param atacante: Personaje que ataca.
     :type atacante: Personaje
-    :param accion_atacante: 1 si ataca y 0 si no.
+    :param accion_atacante: 1 si ataca y 2 si no.
     :type accion_atacante: int
     :param defensor: Personaje que defiende.
     :type defensor: Personaje
-    :param accion_defensor: 0 si defiende y 1 si no.
+    :param accion_defensor: 2 si defiende y 1 si no.
     :type accion_defensor: int
     :return: Mensaje descriptivo del turno.
     :rtype: str
     """
 
     if accion_atacante == 1:
-        if accion_defensor == 0:
+        if accion_defensor == 2:
             daño = max(0, atacante.ataque - defensor.defensa)
             defensor.vida = defensor.vida - daño
             mensaje = (
