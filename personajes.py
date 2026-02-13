@@ -1,4 +1,4 @@
-class personaje:
+class Personaje:
 
     def __init__(self, nombre, vida, ataque, defensa):
         self.nombre = nombre
