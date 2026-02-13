@@ -13,11 +13,35 @@ accion_defensor).
 
 import random
 
-def ataca_o_defiende():
+def turno(atacante, accion_atacante, defensor, accion_defensor):
     """
-    Decide aleatoriamente si el enemigo ataca o defiende
+    Gestiona lo que sucede en cada turno en función de las acciones introducidas
+    
+    :param atacante: Personaje que ataca.
+    :type atacante: dict
+    :param accion_atacante: 1 si ataca y 0 si no.
+    :type accion_atacante: int
+    :param defensor: Personaje que defiende.
+    :type defensor: dict
+    :param accion_defensor: 0 si defiende y 1 si no.
+    :type accion_defensor: int
+    :return: Puntos de vida restantes del defensor.
+    :rtype: int
+    """
+    if accion_atacante == 1:
+        if accion_defensor == 1:
+            return defensor.vida - (atacante.ataque - defensor.defensa)
+        else:
+            return defensor.vida - atacante.ataque
+    else:
+        return defensor.vida  
 
-    :return: True si ataca y False si defiende
-    :rtype: bool
+
+def maquina_ataque():
     """
-    return random.randint(0, 1) == 1
+    Decide aleatoriamente si la máquina ataca o defiende.
+
+    :return: 1 ataca y 0 defiende.
+    :rtype: int
+    """
+    return random.randint(0, 1)
