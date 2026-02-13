@@ -1,4 +1,4 @@
-class gemas:
+class Gemas:
 
     def __init__(self):
         self.listaGemas = []
