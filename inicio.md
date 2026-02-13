@@ -2,13 +2,20 @@
 
 Podéis organizar el proyecto en módulos funcionales, por ejemplo:
 
+```text
 guardian_ruinas/
 │
-├── main.py # Orquestador del programa
-├── personajes.py # Todo lo relacionado con aventureros y enemigo
-├── gemas.py # Lógica del tesoro
-├── combate.py # Sistema de turnos y combate
-└── utils.py # Funciones auxiliares (si hicieran falta)
+├── main.py
+│   └── Orquestador del programa
+├── personajes.py
+│   └── Todo lo relacionado con aventureros y enemigo
+├── gemas.py
+│   └── Lógica del tesoro
+├── combate.py
+│   └── Sistema de turnos y combate
+└── utils.py
+    └── Funciones auxiliares (si hicieran falta)
+```
 
 
 ## 📌 Responsabilidad de cada módulo
