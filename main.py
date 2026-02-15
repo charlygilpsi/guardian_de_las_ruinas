@@ -11,24 +11,39 @@ clases = [
     ["Paladin", 150, 40, 60]
 ]
 
-i = 1
-for clase in clases:
-    print(f"{i}- Clase: {clase[0]}, vida: {clase[1]}, ataque: {clase[2]}, defensa{clase[3]}")
-    i += 1
+def imprimirClases():
+    i = 1
+    for clase in clases:
+        print(f"{i}- Clase: {clase[0]}, vida: {clase[1]}, ataque: {clase[2]}, defensa{clase[3]}")
+        i += 1
 
+def claseValida(opcion):
+    encontrada = False
+    for clase in clases:
+        if clase[0] == opcion:
+            encontrada = True
+    return encontrada
+
+def getClase(opcion):
+    if opcion.isdigit():   # devuelve la tupla correspondiente
+        if 1 <= int(opcion) < len(clases):
+            return clases[int(opcion)-1]
+    
+    for clase in clases:    # busca por el nombre de la clase y la devuelve
+        if opcion == clase[0]:
+            return clase    
+    
+    return False    # si no encuentra nada
 
 #pedir calse al usuario
-datos_pj = None
-while datos_pj is None:
-    seleccion_clase = input("Introduce la clase de tu PJ:_").capitalize()
-    for clase in clases:
-        if clase[0] == seleccion_clase:
-            datos_pj = clase
-            break  # Detenemos la búsqueda al encontrarlo
-        else:
-            print("Clase no encontrada")
-jugador = Personaje(datos_pj[0], datos_pj[1], datos_pj[2], datos_pj[3])
-
+datos_pj = False
+while not datos_pj:
+    imprimirClases()
+    seleccion_clase = input("Introduce la clase de tu PJ:_ ").capitalize()
+    datos_pj = getClase(seleccion_clase)
+    if datos_pj is not False:
+        jugador = Personaje(datos_pj[0], datos_pj[1], datos_pj[2], datos_pj[3])
+print(jugador.nombre)
 
 enemigo = Personaje("Enemigo", 150, 50, 5)
 
