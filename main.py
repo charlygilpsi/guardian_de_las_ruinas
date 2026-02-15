@@ -51,14 +51,24 @@ enemigo = Personaje("Enemigo", 150, 50, 5)
 #ejecucion del juego
 turno_jugador = True
 while jugador.vida > 0 or enemigo.vida > 0:
-    accion_jugador = input("introduce la accion: atacar/defender")
+
+    accion_jugador = input("introduce la accion: atacar/defender").capitalize()
+    if accion_jugador == "Atacar":
+        atacar_jugador = True
+    else:
+        atacar_jugador = False
+      
     accion_enemigo = combate.maquina_ataque()
+    if accion_enemigo == 1:
+        accion_enemigo = True
+    else:
+        accion_enemigo = False
 
 
     if turno_jugador:
         # (atacante, accion_atacante, defensor, accion_defensor
-        combate.turno(jugador, accion_jugador, enemigo, accion_enemigo)
+        print(combate.turno(jugador, atacar_jugador, enemigo, accion_enemigo))
     else:
-        combate.turno(enemigo, accion_enemigo, jugador, accion_jugador)
+        print(combate.turno(enemigo, accion_enemigo, jugador, atacar_jugador))
     
     turno_jugador = not turno_jugador
