@@ -50,9 +50,9 @@ enemigo = Personaje("Enemigo", 150, 50, 5)
 
 #ejecucion del juego
 turno_jugador = True
-while jugador.vida > 0 or enemigo.vida > 0:
+while jugador.vida > 0 and enemigo.vida > 0:
 
-    accion_jugador = input("introduce la accion: atacar/defender").capitalize()
+    accion_jugador = input("introduce la accion: atacar/defender:_").capitalize()
     if accion_jugador == "Atacar":
         atacar_jugador = True
     else:
