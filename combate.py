@@ -36,7 +36,7 @@ def turno(atacante, accion_atacante, defensor, accion_defensor):
         else:
             defensor.vida = defensor.vida - atacante.ataque
             mensaje = (
-                f"{atacante.nombre} ataca y causa {daño} puntos de daño. {defensor.nombre} tiene ahora {defensor.vida} puntos de vida."
+                f"{atacante.nombre} ataca y causa {atacante.ataque} puntos de daño. {defensor.nombre} tiene ahora {defensor.vida} puntos de vida."
             )
     else:
         mensaje = (
