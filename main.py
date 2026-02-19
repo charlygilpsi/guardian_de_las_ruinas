@@ -1,6 +1,6 @@
 from personajes import Personaje
-from combate import turno, maquina_ataque
-from utils import opcion_valida
+import interaccion_usuario
+import partida
 import os
 
 mago = Personaje("Mago", 80, 28, 8)
@@ -28,69 +28,18 @@ TITULO_COMBATE = "COMBATE CONTRA EL GUARDIÁN"
 ERROR_OPCION_PERSONAJE_INVALIDA = f"ERROR: Introduzca un número entero entre 1 y {CANTIDAD_PERSONAJES}."
 ERROR_ATAQUE_DEFENSA = "ERROR: Introduzca un 1 (atacar) o un 2 (defender)."
 
-while not opcion_personaje_valida:
-    print("")
-    print(TEXTO_SELECCION_PERSONAJE)
-    print("")
-    for i, personaje in enumerate(personajes, start=1):
-        print(f"{i}. {personaje.nombre}: {personaje.vida} puntos de vida, {personaje.ataque} puntos de ataque, {personaje.defensa} puntos de defensa")
-        i = i + 1
+personaje_elegido = interaccion_usuario.elegir_personaje(TEXTO_SELECCION_PERSONAJE, TEXTO_ELEGIR_OPCION, ERROR_OPCION_PERSONAJE_INVALIDA, personajes )
 
-    print("")
-    opcion = input(TEXTO_ELEGIR_OPCION)
+interaccion_usuario.borrar_consola()
 
-    if not opcion_valida(opcion, CANTIDAD_PERSONAJES):
-        os.system("cls")
-        print("")
-        print(ERROR_OPCION_PERSONAJE_INVALIDA)
-    else:
-        opcion_personaje_valida = True
-        personaje_elegido = personajes[int(opcion) - 1]
+interaccion_usuario.mostrar_mensaje("")
+interaccion_usuario.mostrar_mensaje(TITULO_COMBATE)
 
-os.system("cls")
-print("")
-print(TITULO_COMBATE)
+partida.partida(TEXTO_ELEGIR_OPCION, ERROR_ATAQUE_DEFENSA, opcion_turno_valida, personaje_elegido, guardian)
 
-while not fin_del_juego:
-    while not opcion_turno_valida:
-        print("")
-        print("Seleccione una acción: ")
-        print("")
-        print("1. Atacar")
-        print("2. Defender")
-        print("")
-        accion_personaje = input(TEXTO_ELEGIR_OPCION)
-        
-        if not opcion_valida(accion_personaje, 2):
-            os.system("cls")
-            print("")
-            print(ERROR_ATAQUE_DEFENSA)
-
-        else:
-            opcion_turno_valida = True
-
-    opcion_turno_valida = False
-    os.system("cls")
-    accion_guardian = maquina_ataque()
-    mensaje_turno_jugador = turno(personaje_elegido, int(accion_personaje), guardian, accion_guardian)
-    print("")
-    print(mensaje_turno_jugador)
-
-    if guardian.vida <= 0:
-        fin_del_juego = True
-        continue
-
-    mensaje_turno_maquina = turno(guardian, accion_guardian, personaje_elegido, int(accion_personaje))
-    print("")
-    print(mensaje_turno_maquina)
-
-    if personaje_elegido.vida <= 0:
-        fin_del_juego = True
-        continue
-
-print("")
+interaccion_usuario.mostrar_mensaje("")
 if personaje_elegido.vida <= 0:
-    print(TEXTO_DERROTA)
+    interaccion_usuario.mostrar_mensaje(TEXTO_DERROTA)
 else:
-    print(TEXTO_VICTORIA)
-print("")
+    interaccion_usuario.mostrar_mensaje(TEXTO_VICTORIA)
+interaccion_usuario.mostrar_mensaje("")
