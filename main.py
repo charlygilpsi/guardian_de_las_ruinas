@@ -1,7 +1,6 @@
-from personajes import Personaje
-import interaccion_usuario
-import partida
-import os
+from juego.personajes import Personaje
+import interaccion.interaccion_usuario as interaccion_usuario
+from juego.partida import partida
 
 mago = Personaje("Mago", 80, 28, 8)
 luchador = Personaje("Luchador", 120, 18, 14)
@@ -35,7 +34,7 @@ interaccion_usuario.borrar_consola()
 interaccion_usuario.mostrar_mensaje("")
 interaccion_usuario.mostrar_mensaje(TITULO_COMBATE)
 
-partida.partida(TEXTO_ELEGIR_OPCION, ERROR_ATAQUE_DEFENSA, opcion_turno_valida, personaje_elegido, guardian)
+partida(TEXTO_ELEGIR_OPCION, ERROR_ATAQUE_DEFENSA, opcion_turno_valida, personaje_elegido, guardian)
 
 interaccion_usuario.mostrar_mensaje("")
 if personaje_elegido.vida <= 0:

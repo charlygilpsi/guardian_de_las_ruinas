@@ -1,5 +1,4 @@
-from utils import opcion_valida
-from combate import turno, maquina_ataque
+from utils.utils import opcion_valida
 import os
 
 def elegir_personaje(texto_seleccion_personaje, texto_elegir_opcion, texto_opcion_personaje_invalida, array_personaje):

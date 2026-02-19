@@ -1,5 +1,5 @@
-import interaccion_usuario
-import combate
+import interaccion.interaccion_usuario as interaccion_usuario
+import juego.combate as combate
 
 def partida(texto_elegir_opcion, error_ataque_defensa, opcion_turno_valida, personaje_elegido, guardian):
     """
