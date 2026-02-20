@@ -14,7 +14,8 @@ def partida(texto_elegir_opcion, error_ataque_defensa, opcion_turno_valida, pers
         contador_turno (int): Número de turno.
         log (list): Array que contiene lo sucedido en cada turno.
         
-        
+        Returns:
+            bool: Devuelve True si el usuario finaliza el programa y False si el programa termina normalmente.
     """
     fin_del_juego = False
     
