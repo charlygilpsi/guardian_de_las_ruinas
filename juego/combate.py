@@ -41,12 +41,6 @@ def turno(atacante, accion_atacante, defensor, accion_defensor):
     elif accion_atacante == 2:
         mensaje = (
             f"{atacante.nombre} no ha atacado. {defensor.nombre} tiene {defensor.vida} puntos de vida."
-        )
-    
-    elif accion_atacante == 3:
-        return "log"
-    
-    else:
-        return "salir"      
+        )   
     
     return mensaje
