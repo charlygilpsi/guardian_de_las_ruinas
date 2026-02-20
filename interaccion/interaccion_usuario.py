@@ -47,7 +47,7 @@ def seleccionar_accion(texto_elegir_opcion, error_ataque_defensa, opcion_turno_v
         opcion_turno_valida (bool): Bandera que cambia si la opción elegida es válida
 
     Returns:
-        int: Número correspondiente a la acción elegia.
+        int: Número correspondiente a la acción elegida.
     """
     opcion_turno_valida = False
 
@@ -57,10 +57,12 @@ def seleccionar_accion(texto_elegir_opcion, error_ataque_defensa, opcion_turno_v
             print("")
             print("1. Atacar")
             print("2. Defender")
+            print("3. Log del combate")
+            print("4. Salir")
             print("")
             accion_personaje = input(texto_elegir_opcion)
             
-            if not opcion_valida(accion_personaje, 2):
+            if not opcion_valida(accion_personaje, 4):
                 os.system("cls")
                 print("")
                 print(error_ataque_defensa)
@@ -76,7 +78,7 @@ def mostrar_mensaje(mensaje):
 
     Args:
         mensaje (str): Mensaje a mostrar.
-    """
+    """   
     print(mensaje)
     
     
@@ -85,3 +87,34 @@ def borrar_consola():
     Borrar lo que había en consola.
     """
     os.system("cls")
+    
+    
+def rellenar_log(contador_turno, mensaje_turno_jugador, mensaje_turno_maquina, log):
+    """
+    Añade lo sucedido en cada turno en el log.
+
+    Args:
+        contador_turno (int): Contador de turnos.
+        mensaje_turno_jugador (str): Descripción de lo sucedido en el turno del jugador.
+        mensaje_turno_maquina (str): Descripción de lo sucedido en el turno de la máquina.
+        log (list): Log donde se va guardando lo sucedido en cada turno.
+    """
+    contenido = f"Turno {contador_turno}\n\n{mensaje_turno_jugador}\n\n{mensaje_turno_maquina}\n\n"
+    log.append(contenido)
+    
+
+def mostrar_log(log):
+    """
+    Imprime el log por pantalla
+
+    Args:
+        log (list): Array que contiene lo sucedido en cada turno.
+        
+    Returns:
+        str: Devuelve lo sucedido en cada turno.
+    """
+    for turno in log:
+        mostrar_mensaje(turno)
+    
+    mostrar_mensaje("")
+    input("Pulse Intro para continuar...")

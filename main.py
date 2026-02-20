@@ -8,7 +8,8 @@ picaro = Personaje("Pícaro", 75, 24, 10)
 barbaro = Personaje("Bárbaro", 140, 22, 12)
 clerigo = Personaje("Clérigo", 130, 15, 18)
 guardian = Personaje("Guardián", 200, 20, 15)
-
+contador_turno = 0
+log = []
 personajes = [mago, luchador, picaro, barbaro, clerigo]
 
 # Banderas
@@ -25,20 +26,21 @@ TEXTO_VICTORIA = "¡Enhorabuena, has derrotado al Guardián!"
 TEXTO_DERROTA = "Lástima, el Guardián te ha vencido, vuelve a intentarlo."
 TITULO_COMBATE = "COMBATE CONTRA EL GUARDIÁN"
 ERROR_OPCION_PERSONAJE_INVALIDA = f"ERROR: Introduzca un número entero entre 1 y {CANTIDAD_PERSONAJES}."
-ERROR_ATAQUE_DEFENSA = "ERROR: Introduzca un 1 (atacar) o un 2 (defender)."
+ERROR_ATAQUE_DEFENSA = "ERROR: Introduzca un valor válido."
 
-personaje_elegido = interaccion_usuario.elegir_personaje(TEXTO_SELECCION_PERSONAJE, TEXTO_ELEGIR_OPCION, ERROR_OPCION_PERSONAJE_INVALIDA, personajes )
+personaje_elegido = interaccion_usuario.elegir_personaje(TEXTO_SELECCION_PERSONAJE, TEXTO_ELEGIR_OPCION, ERROR_OPCION_PERSONAJE_INVALIDA, personajes)
 
 interaccion_usuario.borrar_consola()
 
 interaccion_usuario.mostrar_mensaje("")
 interaccion_usuario.mostrar_mensaje(TITULO_COMBATE)
 
-partida(TEXTO_ELEGIR_OPCION, ERROR_ATAQUE_DEFENSA, opcion_turno_valida, personaje_elegido, guardian)
+fin_de_programa = partida(TEXTO_ELEGIR_OPCION, ERROR_ATAQUE_DEFENSA, opcion_turno_valida, personaje_elegido, guardian, contador_turno, log)
 
-interaccion_usuario.mostrar_mensaje("")
-if personaje_elegido.vida <= 0:
-    interaccion_usuario.mostrar_mensaje(TEXTO_DERROTA)
-else:
-    interaccion_usuario.mostrar_mensaje(TEXTO_VICTORIA)
-interaccion_usuario.mostrar_mensaje("")
+if not fin_de_programa:
+    interaccion_usuario.mostrar_mensaje("")
+    if personaje_elegido.vida <= 0:
+        interaccion_usuario.mostrar_mensaje(TEXTO_DERROTA)
+    else:
+        interaccion_usuario.mostrar_mensaje(TEXTO_VICTORIA)
+    interaccion_usuario.mostrar_mensaje("")
