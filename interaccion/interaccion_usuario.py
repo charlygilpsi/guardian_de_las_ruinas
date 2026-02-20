@@ -116,5 +116,4 @@ def mostrar_log(log):
     for turno in log:
         mostrar_mensaje(turno)
     
-    mostrar_mensaje("")
     input("Pulse Intro para continuar...")
